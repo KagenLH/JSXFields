@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const optionDefaults = {
     label: "Untitled",
     maxlength: 255,
@@ -100,7 +98,10 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
 
 }
 
-export function createMultiLineText(passedOptions = optionDefaults) {
+export function createMultiLineText(stateSelector, setStateSelector, passedOptions = optionDefaults) {
+    if (stateSelector === undefined) throw new Error("createMultiLineText must be given a state selector for React controlled inputs.")
+    if (setStateSelector === undefined) throw new Error("createMultiLineText must be given a state selector setter for React controlled inputs.")
+
     const options = {
         ...optionDefaults,
         ...passedOptions
@@ -117,7 +118,8 @@ export function createMultiLineText(passedOptions = optionDefaults) {
                         required={options.required}
                         placeholder={options.placeholder}
                         maxlength={options.maxlength}
-                    >{options.defaultValue}</textarea>
+                        onChange={(e) => setStateSelector(e.target.value)}
+                    >{stateSelector}</textarea>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
             </div>
