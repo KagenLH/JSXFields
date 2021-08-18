@@ -60,11 +60,11 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
                 </div>
             </div>
         );
-    } else if (options.labelPlacement === "left") {
+    } else {
         return (
             <div style={{ display: "flex" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <label style={ options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
                     <input
                         type="text"
                         value={stateSelector}
@@ -75,33 +75,12 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
                         maxLength={options.maxLength}
                     />
                    {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
-                    }
-                </div>
-            </div>
-        );
-    } else if (options.labelPlacement === "right") {
-        return (
-            <div style={{ display: "flex" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <input
-                        type="text"
-                        value={stateSelector}
-                        onChange={(e) => setStateSelector(e.target.value)}
-                        style={{ width: options.size === "m" ? "300px" : "450px" }}
-                        required={options.required}
-                        placeholder={options.placeholder}
-                        maxLength={options.maxlength}
-                    />
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                        options.instructions.length ? <span style={options.preStyled ? { ...instructionStyles, marginLeft: "10px" } : {}}>{options.instructions}</span> : null
                     }
                 </div>
             </div>
         );
     }
-
 }
 
 export function createMultiLineText(stateSelector, setStateSelector, passedOptions = optionDefaults) {
@@ -134,11 +113,11 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
             </div>
         );
     }
-    else if (options.labelPlacement === "left") {
+    else {
         return (
             <div style={{ display: "flex" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
                     <textarea
                         type="text"
                         style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
@@ -154,27 +133,6 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
                 </div>
             </div>
         )
-    }
-    else if (options.labelPlacement === "right") {
-        return (
-            <div style={{ display: "flex" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <textarea
-                        type="text"
-                        style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
-                        required={options.required}
-                        placeholder={options.placeholder}
-                        maxLength={options.maxLength}
-                        value={stateSelector}
-                        onChange={(e) => setStateSelector(e.target.value)}
-                    ></textarea>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
-                    }
-                </div>
-            </div>
-        );
     }
 }
 
@@ -204,33 +162,16 @@ export function createSelectField(stateSelector, setStateSelector, passedOptions
             </div>
         );
     }
-    else if (options.labelPlacement === "left") {
+    else {
         return (
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
                     <select value={stateSelector} onChange={(e) => setStateSelector(e.target.value)} required={options.required}>
                         {options.choices.map(choice => (
                             <option key={choice} value={choice}>{choice}</option>
                         ))}
                     </select>
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
-                    }
-                </div>
-            </div>
-        );
-    }
-    else if (options.labelPlacement === "right") {
-        return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <select value={stateSelector} onChange={(e) => setStateSelector(e.target.value)} required={options.required}>
-                        {options.choices.map(choice => (
-                            <option key={choice} value={choice}>{choice}</option>
-                        ))}
-                    </select>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                    {
                         options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
                     }
@@ -276,11 +217,11 @@ export function createMultipleChoice(stateSelector, setStateSelector, passedOpti
             </div>
         );
     }
-    else if (options.labelPlacement === "left") {
+    else {
         return (
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
                     <div>
                         {options.choices.map(choice => (
                             <div key={choice}>
@@ -295,32 +236,6 @@ export function createMultipleChoice(stateSelector, setStateSelector, passedOpti
                             </div>
                         ))}
                     </div>
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
-                    }
-                </div>
-            </div>
-        );
-    }
-    else if (options.labelPlacement === "right") {
-        return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div>
-                        {options.choices.map(choice => (
-                            <div key={choice}>
-                                <input
-                                    type="radio"
-                                    value={choice}
-                                    name={options.name}
-                                    checked={stateSelector === choice}
-                                    onChange={(e) => setStateSelector(e.target.value)}
-                                />
-                                <label style={{ marginLeft: "5px" }}>{choice}</label>
-                            </div>
-                        ))}
-                    </div>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                    {
                         options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
                     }
@@ -365,11 +280,11 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
             </div>
         );
     }
-    else if (options.labelPlacement === "left") {
+    else {
         return (
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
                     <div>
                         {options.choices.map(choice => (
                             <div key={choice}>
@@ -383,31 +298,6 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
                             </div>
                         ))}
                     </div>
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
-                    }
-                </div>
-            </div>
-        );
-    }
-    else if (options.labelPlacement === "right") {
-        return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div>
-                        {options.choices.map(choice => (
-                            <div key={choice}>
-                                <input
-                                    type="checkbox"
-                                    // value={choice} 
-                                    name={options.name}
-                                    onChange={(e) => setStateSelector(e.target.value)}
-                                />
-                                <label style={{ marginLeft: "5px" }}>{choice}</label>
-                            </div>
-                        ))}
-                    </div>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                    {
                         options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
                     }
@@ -445,11 +335,11 @@ export function createNumericInput(stateSelector, setStateSelector, passedOption
                 </div>
             </div>
         );
-    } else if (options.labelPlacement === "left") {
+    } else {
         return (
             <div style={{ display: "flex" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
                     <input
                         type="number"
                         style={{ width: options.size === "m" ? "100px" : "150px" }}
@@ -464,25 +354,5 @@ export function createNumericInput(stateSelector, setStateSelector, passedOption
                 </div>
             </div>
         );
-    } else if (options.labelPlacement === "right") {
-        return (
-            <div style={{ display: "flex" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <input
-                        type="number"
-                        style={{ width: options.size === "m" ? "100px" : "150px" }}
-                        required={options.required}
-                        placeholder={options.placeholder}
-                        value={stateSelector}
-                        onChange={(e) => setStateSelector(e.target.value)}
-                    />
-                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
-                    }
-                </div>
-            </div>
-        );
-    }
-
+    } 
 }

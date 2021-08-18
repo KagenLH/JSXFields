@@ -12,12 +12,12 @@ function App() {
   return (
     <>
       <div style={{ width: "600px" }}>
-        {createTextInput(textValue, setTextValue, {instructions: "Testing if this works"})}
-        {createMultiLineText(multiLineValue, setMultiLineValue, { instructions: "Put in some text here...", placeholder: "Put in some text here..." })}
-        {createSelectField(selectFieldValue, setSelectFieldValue,{choices: ['1', '2', '3']})}
-        {createMultipleChoice(mulitpleChoiceValue, setMultipleChoiceValue, { labelPlacement: "top" })}
-        {createCheckboxField(checkBoxFieldValue, setCheckBoxFieldValue)}
-        {createNumericInput(numericInputValue, setNumericInputValue)}
+        {createTextInput(textValue, setTextValue, {instructions: "Testing if this works", labelPlacement: "left"})}
+        {createMultiLineText(multiLineValue, setMultiLineValue, { instructions: "Put in some text here...", placeholder: "Put in some text here...", labelPlacement: "left" })}
+        {createSelectField(selectFieldValue, setSelectFieldValue,{choices: ['1', '2', '3'], labelPlacement: "left"})}
+        {createMultipleChoice(mulitpleChoiceValue, setMultipleChoiceValue, { labelPlacement: "left" })}
+        {createCheckboxField(checkBoxFieldValue, setCheckBoxFieldValue, { labelPlacement: "left" })}
+        {createNumericInput(numericInputValue, setNumericInputValue, { labelPlacement: "left"})}
       </div>
     </>
   );
