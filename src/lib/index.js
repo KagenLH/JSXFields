@@ -54,8 +54,8 @@ export function createTextInput(passedOptions = textDefaults) {
     } else if (options.labelPlacement === "left") {
         return (
             <div style={{ display: "flex" }}>
-                <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <input
                         type="text"
                         style={{ width: (options.size === "m" ? "300px" : "450px") }}
@@ -71,7 +71,7 @@ export function createTextInput(passedOptions = textDefaults) {
     } else if (options.labelPlacement === "right") {
         return (
             <div style={{ display: "flex" }}>
-                <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <input
                         type="text"
                         style={{ width: options.size === "m" ? "300px" : "450px" }}
@@ -80,9 +80,9 @@ export function createTextInput(passedOptions = textDefaults) {
                         placeholder={options.placeholder}
                         maxlength={options.maxlength}
                     />
+                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
-                <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
             </div>
         );
     }
@@ -114,9 +114,9 @@ export function createMultiLineText(passedOptions = textDefaults) {
     }
     else if (options.labelPlacement === "left") {
         return (
-            <div style={{ display: "flex" }}>
-                <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                <div>
+            <div style={{ display: "flex" }}>               
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <textarea
                         type="text"
                         style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
@@ -132,7 +132,7 @@ export function createMultiLineText(passedOptions = textDefaults) {
     else if (options.labelPlacement === "right") {
         return (
             <div style={{ display: "flex" }}>
-                <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <textarea
                         type="text"
                         style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
@@ -140,9 +140,9 @@ export function createMultiLineText(passedOptions = textDefaults) {
                         placeholder={options.placeholder}
                         maxlength={options.maxlength}
                     >{options.defaultValue}</textarea>
+                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
-                <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
             </div>
         );
     }
