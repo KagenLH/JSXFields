@@ -14,13 +14,12 @@ const optionDefaults = {
 };
 
 const globalStylesInput = {
-    marginTop: "5px",
+    marginTop: "10px",
     padding: "3px",
 };
 
 const labelStyles = {
     marginBottom: "5px",
-    marginTop: "5px",
     fontSize: "18px",
     fontWeight: "600",
     letterSpacing: "0.7px",
@@ -63,13 +62,13 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
     } else {
         return (
             <div style={{ display: "flex" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={ options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <label style={ options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
                     <input
                         type="text"
                         value={stateSelector}
                         onChange={(e) => setStateSelector(e.target.value)}
-                        style={{ width: (options.size === "m" ? "300px" : "450px") }}
+                        style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "17px", minHeight: "17px"  }}
                         required={options.required}
                         placeholder={options.placeholder}
                         maxLength={options.maxLength}
@@ -115,9 +114,9 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
     }
     else {
         return (
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", marginTop: "9px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
                     <textarea
                         type="text"
                         style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
@@ -128,7 +127,7 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
                         onChange={(e) => setStateSelector(e.target.value)}
                     ></textarea>
                    {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                        options.instructions.length ? <span style={options.preStyled ? { ...instructionStyles, marginLeft: "10px" } : {}}>{options.instructions}</span> : null
                     }
                 </div>
             </div>
@@ -164,9 +163,9 @@ export function createSelectField(stateSelector, setStateSelector, passedOptions
     }
     else {
         return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", flexDirection: "row", marginTop: "9px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start"  } : {}}>{options.label}</label>
                     <select value={stateSelector} onChange={(e) => setStateSelector(e.target.value)} required={options.required}>
                         {options.choices.map(choice => (
                             <option key={choice} value={choice}>{choice}</option>
@@ -219,10 +218,10 @@ export function createMultipleChoice(stateSelector, setStateSelector, passedOpti
     }
     else {
         return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", flexDirection: "row", marginTop: "9px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
-                    <div>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
+                    <div style={{  } }>
                         {options.choices.map(choice => (
                             <div key={choice}>
                                 <input
@@ -236,8 +235,8 @@ export function createMultipleChoice(stateSelector, setStateSelector, passedOpti
                             </div>
                         ))}
                     </div>
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    {
+                        options.instructions.length ? <span style={options.preStyled ? { ...instructionStyles, marginLeft: "10px" } : {}}>{options.instructions}</span> : null
                     }
                 </div>
             </div>
@@ -273,7 +272,7 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
                             </div>
                         ))}
                     </div>
-                   {
+                    {
                         options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
                     }
                 </div>
@@ -282,10 +281,10 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
     }
     else {
         return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", flexDirection: "row", marginTop: "9px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
-                    <div>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
+                    <div style={{ }}>
                         {options.choices.map(choice => (
                             <div key={choice}>
                                 <input
@@ -298,8 +297,8 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
                             </div>
                         ))}
                     </div>
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    {
+                        options.instructions.length ? <span style={options.preStyled ? { ...instructionStyles, marginLeft: "10px" } : {}}>{options.instructions}</span> : null
                     }
                 </div>
             </div>
@@ -329,17 +328,17 @@ export function createNumericInput(stateSelector, setStateSelector, passedOption
                         value={stateSelector}
                         onChange={(e) => setStateSelector(e.target.value)}
                     />
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    {
+                        options.instructions.length ? <span style={options.preStyled ? { ...instructionStyles, marginLeft: "10px" } : {}}>{options.instructions}</span> : null
                     }
                 </div>
             </div>
         );
     } else {
         return (
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", marginTop: "9px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px" } : {}}>{options.label}</label>
+                    <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
                     <input
                         type="number"
                         style={{ width: options.size === "m" ? "100px" : "150px" }}
@@ -348,8 +347,8 @@ export function createNumericInput(stateSelector, setStateSelector, passedOption
                         value={stateSelector}
                         onChange={(e) => setStateSelector(e.target.value)}
                     />
-                   {
-                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    {
+                        options.instructions.length ? <span style={options.preStyled ? { ...instructionStyles, marginLeft: "10px" } : {}}>{options.instructions}</span> : null
                     }
                 </div>
             </div>

@@ -12,12 +12,12 @@ function App() {
   return (
     <>
       <div style={{ width: "600px" }}>
-        {createTextInput(textValue, setTextValue, {instructions: "Testing if this works", labelPlacement: "left"})}
-        {createMultiLineText(multiLineValue, setMultiLineValue, { instructions: "Put in some text here...", placeholder: "Put in some text here...", labelPlacement: "left" })}
-        {createSelectField(selectFieldValue, setSelectFieldValue,{choices: ['1', '2', '3'], labelPlacement: "left"})}
-        {createMultipleChoice(mulitpleChoiceValue, setMultipleChoiceValue, { labelPlacement: "left" })}
-        {createCheckboxField(checkBoxFieldValue, setCheckBoxFieldValue, { labelPlacement: "left" })}
-        {createNumericInput(numericInputValue, setNumericInputValue, { labelPlacement: "left"})}
+        {createTextInput(textValue, setTextValue, {instructions: "Testing if this works"})}
+        {createMultiLineText(multiLineValue, setMultiLineValue, { instructions: "Put in some text here...", placeholder: "Put in some text here..." })}
+        {createSelectField(selectFieldValue, setSelectFieldValue,{choices: ['1', '2', '3']})}
+        {createMultipleChoice(mulitpleChoiceValue, setMultipleChoiceValue, { instructions: "Put in some text here..." })}
+        {createCheckboxField(checkBoxFieldValue, setCheckBoxFieldValue, { instructions: "Put in some text here..." })}
+        {createNumericInput(numericInputValue, setNumericInputValue, { instructions: "Put in some text here..."})}
       </div>
     </>
   );
