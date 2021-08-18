@@ -38,10 +38,10 @@ export function createTextInput(passedOptions = textDefaults) {
         return (
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center"}}>
                     <input
                         type="text"
-                        style={{width: options.size === "m" ? "300px" : "450px"}}
+                        style={{width: options.size === "m" ? "300px" : "450px", maxHeight: "25px", minHeight: "25px"}}
                         required={options.required}
                         value={options.defaultValue}
                         placeholder={options.placeholder}
@@ -58,7 +58,7 @@ export function createTextInput(passedOptions = textDefaults) {
                 <div>
                     <input
                         type="text"
-                        style={{width: options.size === "m" ? "300px" : "450px"}}
+                        style={{width: (options.size === "m" ? "300px" : "450px")}}
                         required={options.required}
                         value={options.defaultValue}
                         placeholder={options.placeholder}
