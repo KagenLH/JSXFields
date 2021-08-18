@@ -54,7 +54,9 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
                         placeholder={options.placeholder}
                         maxLength={options.maxLength}
                     />
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                    {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -72,7 +74,9 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
                         placeholder={options.placeholder}
                         maxLength={options.maxLength}
                     />
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -90,7 +94,9 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
                         maxLength={options.maxlength}
                     />
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -121,7 +127,9 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
                         maxLength={options.maxLength}
                         onChange={(e) => setStateSelector(e.target.value)}
                     ></textarea>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -140,7 +148,9 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
                         value={stateSelector}
                         onChange={(e) => setStateSelector(e.target.value)}
                     ></textarea>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         )
@@ -159,7 +169,9 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
                         onChange={(e) => setStateSelector(e.target.value)}
                     ></textarea>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -185,7 +197,9 @@ export function createSelectField(stateSelector, setStateSelector, passedOptions
                             <option key={choice} value={choice}>{choice}</option>
                         ))}
                     </select>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -200,7 +214,9 @@ export function createSelectField(stateSelector, setStateSelector, passedOptions
                             <option key={choice} value={choice}>{choice}</option>
                         ))}
                     </select>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -215,7 +231,9 @@ export function createSelectField(stateSelector, setStateSelector, passedOptions
                         ))}
                     </select>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -251,7 +269,9 @@ export function createMultipleChoice(stateSelector, setStateSelector, passedOpti
                             </div>
                         ))}
                     </div>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -275,7 +295,9 @@ export function createMultipleChoice(stateSelector, setStateSelector, passedOpti
                             </div>
                         ))}
                     </div>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -299,7 +321,9 @@ export function createMultipleChoice(stateSelector, setStateSelector, passedOpti
                         ))}
                     </div>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -334,7 +358,9 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
                             </div>
                         ))}
                     </div>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -357,7 +383,9 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
                             </div>
                         ))}
                     </div>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -380,7 +408,9 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
                         ))}
                     </div>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -409,7 +439,9 @@ export function createNumericInput(stateSelector, setStateSelector, passedOption
                         value={stateSelector}
                         onChange={(e) => setStateSelector(e.target.value)}
                     />
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -426,7 +458,9 @@ export function createNumericInput(stateSelector, setStateSelector, passedOption
                         value={stateSelector}
                         onChange={(e) => setStateSelector(e.target.value)}
                     />
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
@@ -443,7 +477,9 @@ export function createNumericInput(stateSelector, setStateSelector, passedOption
                         onChange={(e) => setStateSelector(e.target.value)}
                     />
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                   {
+                        options.instructions.length ? <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span> : null
+                    }
                 </div>
             </div>
         );
