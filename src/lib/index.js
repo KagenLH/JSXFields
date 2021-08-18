@@ -1,4 +1,4 @@
-const textDefaults = {
+const optionDefaults = {
     label: "Untitled",
     maxlength: 255,
     required: false,
@@ -8,6 +8,7 @@ const textDefaults = {
     instructions: "",
     labelPlacement: "top",
     preStyled: true,
+    choices: ['', 'First Choice', 'Second Choice', 'Third Choice']
 }
 
 const globalStylesInput = {
@@ -28,9 +29,9 @@ const instructionStyles = {
     backgroundColor: "rgba(0, 0, 0, 0.05)"
 };
 
-export function createTextInput(passedOptions = textDefaults) {
+export function createTextInput(passedOptions = optionDefaults) {
     const options = {
-        ...textDefaults,
+        ...optionDefaults,
         ...passedOptions
     };
 
@@ -89,9 +90,9 @@ export function createTextInput(passedOptions = textDefaults) {
 
 }
 
-export function createMultiLineText(passedOptions = textDefaults) {
+export function createMultiLineText(passedOptions = optionDefaults) {
     const options = {
-        ...textDefaults,
+        ...optionDefaults,
         ...passedOptions
     };
 
@@ -146,4 +147,59 @@ export function createMultiLineText(passedOptions = textDefaults) {
             </div>
         );
     }
+}
+
+export function createSelectField(passedOptions = optionDefaults) {
+    const options = {
+        ...optionDefaults,
+        ...passedOptions
+    };
+
+
+    if (options.labelPlacement === "top") {
+        return (
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <select required={options.required}>
+                        {options.choices.map(choice => (
+                            <option value={choice}>{choice}</option>
+                         ) )}
+                    </select>
+                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                </div>
+            </div>
+        );
+    }
+    else if (options.labelPlacement === "left") {
+        return (
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <select required={options.required}>
+                        {options.choices.map(choice => (
+                            <option value={choice}>{choice}</option>
+                        ))}
+                    </select>
+                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                </div>
+            </div>
+        );
+    }
+    else if (options.labelPlacement === "right") {
+        return (
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <select required={options.required}>
+                        {options.choices.map(choice => (
+                            <option value={choice}>{choice}</option>
+                        ))}
+                    </select>
+                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                </div>
+            </div>
+        );
+    }
+
 }
