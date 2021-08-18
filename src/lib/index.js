@@ -1,6 +1,6 @@
 const optionDefaults = {
     label: "Untitled",
-    maxlength: 255,
+    maxLength: 255,
     required: false,
     size: "m",
     placeholder: "",
@@ -33,8 +33,8 @@ const instructionStyles = {
 };
 
 export function createTextInput(stateSelector, setStateSelector, passedOptions = optionDefaults) {
-    if(stateSelector === undefined) throw new Error("createTextInput must be given a state selector for React controlled inputs.")
-    if(setStateSelector === undefined) throw new Error("createTextInput must be given a state selector setter for React controlled inputs.")
+    if (stateSelector === undefined) throw new Error("createTextInput must be given a state selector for React controlled inputs.")
+    if (setStateSelector === undefined) throw new Error("createTextInput must be given a state selector setter for React controlled inputs.")
     const options = {
         ...optionDefaults,
         ...passedOptions
@@ -52,7 +52,7 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
                         style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "25px", minHeight: "25px" }}
                         required={options.required}
                         placeholder={options.placeholder}
-                        maxlength={options.maxlength}
+                        maxLength={options.maxLength}
                     />
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
@@ -70,7 +70,7 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
                         style={{ width: (options.size === "m" ? "300px" : "450px") }}
                         required={options.required}
                         placeholder={options.placeholder}
-                        maxlength={options.maxlength}
+                        maxLength={options.maxLength}
                     />
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
@@ -87,7 +87,7 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
                         style={{ width: options.size === "m" ? "300px" : "450px" }}
                         required={options.required}
                         placeholder={options.placeholder}
-                        maxlength={options.maxlength}
+                        maxLength={options.maxlength}
                     />
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
@@ -115,11 +115,12 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
                     <textarea
                         type="text"
                         style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
+                        value={stateSelector}
                         required={options.required}
                         placeholder={options.placeholder}
-                        maxlength={options.maxlength}
+                        maxLength={options.maxLength}
                         onChange={(e) => setStateSelector(e.target.value)}
-                    >{stateSelector}</textarea>
+                    ></textarea>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
             </div>
@@ -127,7 +128,7 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
     }
     else if (options.labelPlacement === "left") {
         return (
-            <div style={{ display: "flex" }}>               
+            <div style={{ display: "flex" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <textarea
@@ -135,8 +136,10 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
                         style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
                         required={options.required}
                         placeholder={options.placeholder}
-                        maxlength={options.maxlength}
-                    >{options.defaultValue}</textarea>
+                        maxLength={options.maxLength}
+                        value={stateSelector}
+                        onChange={(e) => setStateSelector(e.target.value)}
+                    ></textarea>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
             </div>
@@ -151,8 +154,10 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
                         style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
                         required={options.required}
                         placeholder={options.placeholder}
-                        maxlength={options.maxlength}
-                    >{options.defaultValue}</textarea>
+                        maxLength={options.maxLength}
+                        value={stateSelector}
+                        onChange={(e) => setStateSelector(e.target.value)}
+                    ></textarea>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
@@ -161,22 +166,24 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
     }
 }
 
-export function createSelectField(passedOptions = optionDefaults) {
+export function createSelectField(stateSelector, setStateSelector, passedOptions = optionDefaults) {
     const options = {
         ...optionDefaults,
         ...passedOptions
     };
 
+    if (stateSelector === undefined) throw new Error("createSelectField must be given a state selector for React controlled inputs.")
+    if (setStateSelector === undefined) throw new Error("createSelectField must be given a state selector setter for React controlled inputs.")
 
     if (options.labelPlacement === "top") {
         return (
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <select required={options.required}>
+                    <select value={stateSelector} onChange={(e) => setStateSelector(e.target.value)} required={options.required}>
                         {options.choices.map(choice => (
-                            <option value={choice}>{choice}</option>
-                         ) )}
+                            <option key={choice} value={choice}>{choice}</option>
+                        ))}
                     </select>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
@@ -188,9 +195,9 @@ export function createSelectField(passedOptions = optionDefaults) {
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                    <select required={options.required}>
+                    <select value={stateSelector} onChange={(e) => setStateSelector(e.target.value)} required={options.required}>
                         {options.choices.map(choice => (
-                            <option value={choice}>{choice}</option>
+                            <option key={choice} value={choice}>{choice}</option>
                         ))}
                     </select>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
@@ -202,9 +209,9 @@ export function createSelectField(passedOptions = optionDefaults) {
         return (
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <select required={options.required}>
+                    <select value={stateSelector} onChange={(e) => setStateSelector(e.target.value)} required={options.required}>
                         {options.choices.map(choice => (
-                            <option value={choice}>{choice}</option>
+                            <option key={choice} value={choice}>{choice}</option>
                         ))}
                     </select>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
@@ -215,7 +222,10 @@ export function createSelectField(passedOptions = optionDefaults) {
     }
 }
 
-export function createMultipleChoice(passedOptions = optionDefaults) {
+export function createMultipleChoice(stateSelector, setStateSelector, passedOptions = optionDefaults) {
+    if (stateSelector === undefined) throw new Error("createMultipleChoice must be given a state selector for React controlled inputs.")
+    if (setStateSelector === undefined) throw new Error("createMultipleChoice must be given a state selector setter for React controlled inputs.")
+
     const options = {
         ...optionDefaults,
         ...passedOptions,
@@ -229,16 +239,18 @@ export function createMultipleChoice(passedOptions = optionDefaults) {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         {options.choices.map(choice => (
-                            <div>
+                            <div key={choice}>
                                 <input
-                                type="radio"
-                                value={choice}
-                                name={options.name}
+                                    type="radio"
+                                    value={choice}
+                                    name={options.name}
+                                    checked={stateSelector === choice}
+                                    onChange={(e) => setStateSelector(e.target.value)}
                                 />
-                                <label style={{marginLeft: "5px"}}>{choice}</label>
+                                <label style={{ marginLeft: "5px" }}>{choice}</label>
                             </div>
-                         ) )}
-                        </div>
+                        ))}
+                    </div>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
             </div>
@@ -251,15 +263,17 @@ export function createMultipleChoice(passedOptions = optionDefaults) {
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <div>
                         {options.choices.map(choice => (
-                            <div>
+                            <div key={choice}>
                                 <input
-                                type="radio"
-                                value={choice}
-                                name={options.name}
+                                    type="radio"
+                                    value={choice}
+                                    name={options.name}
+                                    checked={stateSelector === choice}
+                                    onChange={(e) => setStateSelector(e.target.value)}
                                 />
-                                <label style={{marginLeft: "5px"}}>{choice}</label>
+                                <label style={{ marginLeft: "5px" }}>{choice}</label>
                             </div>
-                         ) )}
+                        ))}
                     </div>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
@@ -272,15 +286,17 @@ export function createMultipleChoice(passedOptions = optionDefaults) {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         {options.choices.map(choice => (
-                            <div>
+                            <div key={choice}>
                                 <input
-                                type="radio"
-                                value={choice}
-                                name={options.name}
+                                    type="radio"
+                                    value={choice}
+                                    name={options.name}
+                                    checked={stateSelector === choice}
+                                    onChange={(e) => setStateSelector(e.target.value)}
                                 />
-                                <label style={{marginLeft: "5px"}}>{choice}</label>
+                                <label style={{ marginLeft: "5px" }}>{choice}</label>
                             </div>
-                         ) )}
+                        ))}
                     </div>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
@@ -290,7 +306,10 @@ export function createMultipleChoice(passedOptions = optionDefaults) {
     }
 }
 
-export function createCheckboxField(passedOptions = optionDefaults) {
+export function createCheckboxField(stateSelector, setStateSelector, passedOptions = optionDefaults) {
+    if (stateSelector === undefined) throw new Error("createCheckboxField must be given a state selector for React controlled inputs.")
+    if (setStateSelector === undefined) throw new Error("createCheckboxField must be given a state selector setter for React controlled inputs.")
+
     const options = {
         ...optionDefaults,
         ...passedOptions,
@@ -304,16 +323,17 @@ export function createCheckboxField(passedOptions = optionDefaults) {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         {options.choices.map(choice => (
-                            <div>
+                            <div key={choice}>
                                 <input
-                                type="checkbox"
-                                value={choice}
-                                name={options.name}
+                                    type="checkbox"
+                                    // value={choice} this causes a controlled input error in console
+                                    name={options.name}
+                                    onChange={(e) => setStateSelector(e.target.value)}
                                 />
-                                <label style={{marginLeft: "5px"}}>{choice}</label>
+                                <label style={{ marginLeft: "5px" }}>{choice}</label>
                             </div>
-                         ) )}
-                        </div>
+                        ))}
+                    </div>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
             </div>
@@ -326,15 +346,16 @@ export function createCheckboxField(passedOptions = optionDefaults) {
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <div>
                         {options.choices.map(choice => (
-                            <div>
+                            <div key={choice}>
                                 <input
-                                type="checkbox"
-                                value={choice}
-                                name={options.name}
+                                    type="checkbox"
+                                    // value={choice} 
+                                    name={options.name}
+                                    onChange={(e) => setStateSelector(e.target.value)}
                                 />
-                                <label style={{marginLeft: "5px"}}>{choice}</label>
+                                <label style={{ marginLeft: "5px" }}>{choice}</label>
                             </div>
-                         ) )}
+                        ))}
                     </div>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
@@ -347,15 +368,16 @@ export function createCheckboxField(passedOptions = optionDefaults) {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         {options.choices.map(choice => (
-                            <div>
+                            <div key={choice}>
                                 <input
-                                type="checkbox"
-                                value={choice}
-                                name={options.name}
+                                    type="checkbox"
+                                    // value={choice} 
+                                    name={options.name}
+                                    onChange={(e) => setStateSelector(e.target.value)}
                                 />
-                                <label style={{marginLeft: "5px"}}>{choice}</label>
+                                <label style={{ marginLeft: "5px" }}>{choice}</label>
                             </div>
-                         ) )}
+                        ))}
                     </div>
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
@@ -365,7 +387,10 @@ export function createCheckboxField(passedOptions = optionDefaults) {
     }
 }
 
-export function createNumericInput(passedOptions = optionDefaults) {
+export function createNumericInput(stateSelector, setStateSelector, passedOptions = optionDefaults) {
+    if (stateSelector === undefined) throw new Error("createNumericInput must be given a state selector for React controlled inputs.")
+    if (setStateSelector === undefined) throw new Error("createNumericInput must be given a state selector setter for React controlled inputs.")
+
     const options = {
         ...optionDefaults,
         ...passedOptions
@@ -381,6 +406,8 @@ export function createNumericInput(passedOptions = optionDefaults) {
                         style={{ width: options.size === "m" ? "100px" : "150px" }}
                         required={options.required}
                         placeholder={options.placeholder}
+                        value={stateSelector}
+                        onChange={(e) => setStateSelector(e.target.value)}
                     />
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
@@ -396,6 +423,8 @@ export function createNumericInput(passedOptions = optionDefaults) {
                         style={{ width: options.size === "m" ? "100px" : "150px" }}
                         required={options.required}
                         placeholder={options.placeholder}
+                        value={stateSelector}
+                        onChange={(e) => setStateSelector(e.target.value)}
                     />
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
                 </div>
@@ -410,6 +439,8 @@ export function createNumericInput(passedOptions = optionDefaults) {
                         style={{ width: options.size === "m" ? "100px" : "150px" }}
                         required={options.required}
                         placeholder={options.placeholder}
+                        value={stateSelector}
+                        onChange={(e) => setStateSelector(e.target.value)}
                     />
                     <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                     <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
