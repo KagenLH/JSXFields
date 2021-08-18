@@ -1,6 +1,10 @@
+import { createTextInput } from './lib';
+
 function App() {
   return (
-    <h1>Hello from App</h1>
+    <>
+      <div style={{ width: "600px" }}>{createTextInput({ instructions: "Put in some text here...", placeholder: "Put in some text here..."})}</div>
+    </>
   );
 }
 
