@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const optionDefaults = {
     label: "Untitled",
     maxlength: 255,
@@ -8,7 +10,8 @@ const optionDefaults = {
     instructions: "",
     labelPlacement: "top",
     preStyled: true,
-    choices: ['', 'First Choice', 'Second Choice', 'Third Choice']
+    choices: ['First Choice', 'Second Choice', 'Third Choice'],
+    name: "name",
 }
 
 const globalStylesInput = {
@@ -18,6 +21,7 @@ const globalStylesInput = {
 
 const labelStyles = {
     marginBottom: "5px",
+    marginTop: "5px",
     fontSize: "18px",
     fontWeight: "600",
     letterSpacing: "0.7px",
@@ -201,5 +205,79 @@ export function createSelectField(passedOptions = optionDefaults) {
             </div>
         );
     }
+}
 
+export function createMultipleChoice(passedOptions = optionDefaults) {
+    const options = {
+        ...optionDefaults,
+        ...passedOptions,
+    };
+
+
+    if (options.labelPlacement === "top") {
+        return (
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div>
+                        {options.choices.map(choice => (
+                            <div>
+                                <input
+                                type="radio"
+                                value={choice}
+                                name={options.name}
+                                />
+                                <label style={{marginLeft: "5px"}}>{choice}</label>
+                            </div>
+                         ) )}
+                        </div>
+                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                </div>
+            </div>
+        );
+    }
+    else if (options.labelPlacement === "left") {
+        return (
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <div>
+                        {options.choices.map(choice => (
+                            <div>
+                                <input
+                                type="radio"
+                                value={choice}
+                                name={options.name}
+                                />
+                                <label style={{marginLeft: "5px"}}>{choice}</label>
+                            </div>
+                         ) )}
+                    </div>
+                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                </div>
+            </div>
+        );
+    }
+    else if (options.labelPlacement === "right") {
+        return (
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div>
+                        {options.choices.map(choice => (
+                            <div>
+                                <input
+                                type="radio"
+                                value={choice}
+                                name={options.name}
+                                />
+                                <label style={{marginLeft: "5px"}}>{choice}</label>
+                            </div>
+                         ) )}
+                    </div>
+                    <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                </div>
+            </div>
+        );
+    }
 }
