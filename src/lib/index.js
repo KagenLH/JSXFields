@@ -34,14 +34,14 @@ export function createTextInput(passedOptions = textDefaults) {
         ...passedOptions
     };
 
-    if(options.labelPlacement === "top") {
+    if (options.labelPlacement === "top") {
         return (
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <input
                         type="text"
-                        style={{width: options.size === "m" ? "300px" : "450px", maxHeight: "25px", minHeight: "25px"}}
+                        style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "25px", minHeight: "25px" }}
                         required={options.required}
                         value={options.defaultValue}
                         placeholder={options.placeholder}
@@ -51,14 +51,14 @@ export function createTextInput(passedOptions = textDefaults) {
                 </div>
             </div>
         );
-    } else if(options.labelPlacement === "left") {
+    } else if (options.labelPlacement === "left") {
         return (
             <div style={{ display: "flex" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                 <div>
                     <input
                         type="text"
-                        style={{width: (options.size === "m" ? "300px" : "450px")}}
+                        style={{ width: (options.size === "m" ? "300px" : "450px") }}
                         required={options.required}
                         value={options.defaultValue}
                         placeholder={options.placeholder}
@@ -68,13 +68,13 @@ export function createTextInput(passedOptions = textDefaults) {
                 </div>
             </div>
         );
-    } else if(options.labelPlacement === "right") {
+    } else if (options.labelPlacement === "right") {
         return (
             <div style={{ display: "flex" }}>
                 <div>
                     <input
                         type="text"
-                        style={{width: options.size === "m" ? "300px" : "450px"}}
+                        style={{ width: options.size === "m" ? "300px" : "450px" }}
                         required={options.required}
                         value={options.defaultValue}
                         placeholder={options.placeholder}
@@ -87,4 +87,63 @@ export function createTextInput(passedOptions = textDefaults) {
         );
     }
 
+}
+
+export function createMultiLineText(passedOptions = textDefaults) {
+    const options = {
+        ...textDefaults,
+        ...passedOptions
+    };
+
+    if (options.labelPlacement === "top") {
+        return (
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <textarea
+                        type="text"
+                        style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
+                        required={options.required}
+                        placeholder={options.placeholder}
+                        maxlength={options.maxlength}
+                    >{options.defaultValue}</textarea>
+                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                </div>
+            </div>
+        );
+    }
+    else if (options.labelPlacement === "left") {
+        return (
+            <div style={{ display: "flex" }}>
+                <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+                <div>
+                    <textarea
+                        type="text"
+                        style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
+                        required={options.required}
+                        placeholder={options.placeholder}
+                        maxlength={options.maxlength}
+                    >{options.defaultValue}</textarea>
+                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                </div>
+            </div>
+        )
+    }
+    else if (options.labelPlacement === "right") {
+        return (
+            <div style={{ display: "flex" }}>
+                <div>
+                    <textarea
+                        type="text"
+                        style={{ width: options.size === "m" ? "300px" : "450px", maxHeight: "75px", minHeight: "75px" }}
+                        required={options.required}
+                        placeholder={options.placeholder}
+                        maxlength={options.maxlength}
+                    >{options.defaultValue}</textarea>
+                    <span style={options.preStyled ? instructionStyles : {}}>{options.instructions}</span>
+                </div>
+                <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
+            </div>
+        );
+    }
 }
