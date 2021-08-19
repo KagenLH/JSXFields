@@ -1,5 +1,5 @@
 {
-  "name": "jsxfields",
+  "name": "@kagenlh/jsxfields",
   "version": "1.0.0",
   "private": false,
   "main": "src/index.js",
