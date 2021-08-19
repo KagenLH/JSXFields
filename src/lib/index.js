@@ -15,7 +15,7 @@ const optionDefaults = {
 
 const globalStylesInput = {
     marginTop: "10px",
-    padding: "3px",
+    padding: "5px",
 };
 
 const labelStyles = {
@@ -41,7 +41,7 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
 
     if (options.labelPlacement === "top") {
         return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ ...globalStylesInput, display: "flex", flexDirection: "column" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <input
@@ -61,7 +61,7 @@ export function createTextInput(stateSelector, setStateSelector, passedOptions =
         );
     } else {
         return (
-            <div style={{ display: "flex" }}>
+            <div style={{ ...globalStylesInput, display: "flex" }}>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <label style={ options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
                     <input
@@ -93,7 +93,7 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
 
     if (options.labelPlacement === "top") {
         return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ ...globalStylesInput, display: "flex", flexDirection: "column" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <textarea
@@ -114,7 +114,7 @@ export function createMultiLineText(stateSelector, setStateSelector, passedOptio
     }
     else {
         return (
-            <div style={{ display: "flex", marginTop: "9px" }}>
+            <div style={{ ...globalStylesInput, display: "flex" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
                     <textarea
@@ -146,7 +146,7 @@ export function createSelectField(stateSelector, setStateSelector, passedOptions
 
     if (options.labelPlacement === "top") {
         return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ ...globalStylesInput, display: "flex", flexDirection: "column" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <select value={stateSelector} onChange={(e) => setStateSelector(e.target.value)} required={options.required}>
@@ -163,7 +163,7 @@ export function createSelectField(stateSelector, setStateSelector, passedOptions
     }
     else {
         return (
-            <div style={{ display: "flex", flexDirection: "row", marginTop: "9px" }}>
+            <div style={{ ...globalStylesInput, display: "flex", flexDirection: "row" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start"  } : {}}>{options.label}</label>
                     <select value={stateSelector} onChange={(e) => setStateSelector(e.target.value)} required={options.required}>
@@ -192,7 +192,7 @@ export function createMultipleChoice(stateSelector, setStateSelector, passedOpti
 
     if (options.labelPlacement === "top") {
         return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ ...globalStylesInput, display: "flex", flexDirection: "column" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
@@ -218,7 +218,7 @@ export function createMultipleChoice(stateSelector, setStateSelector, passedOpti
     }
     else {
         return (
-            <div style={{ display: "flex", flexDirection: "row", marginTop: "9px" }}>
+            <div style={{ ...globalStylesInput, display: "flex", flexDirection: "row" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
                     <div style={{  } }>
@@ -256,7 +256,7 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
 
     if (options.labelPlacement === "top") {
         return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ ...globalStylesInput, display: "flex", flexDirection: "column" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
@@ -281,7 +281,7 @@ export function createCheckboxField(stateSelector, setStateSelector, passedOptio
     }
     else {
         return (
-            <div style={{ display: "flex", flexDirection: "row", marginTop: "9px" }}>
+            <div style={{ ...globalStylesInput, display: "flex", flexDirection: "row" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
                     <div style={{ }}>
@@ -317,7 +317,7 @@ export function createNumericInput(stateSelector, setStateSelector, passedOption
 
     if (options.labelPlacement === "top") {
         return (
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ ...globalStylesInput, display: "flex", flexDirection: "column" }}>
                 <label style={options.preStyled ? labelStyles : {}}>{options.label}</label>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <input
@@ -336,7 +336,7 @@ export function createNumericInput(stateSelector, setStateSelector, passedOption
         );
     } else {
         return (
-            <div style={{ display: "flex", marginTop: "9px" }}>
+            <div style={{ ...globalStylesInput, display: "flex" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <label style={options.preStyled ? { ...labelStyles, marginRight: "10px", alignSelf: "start" } : {}}>{options.label}</label>
                     <input

@@ -2,6 +2,9 @@
   "name": "jsxfields",
   "version": "1.0.0",
   "private": false,
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "files": ["src/index.js"],
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
