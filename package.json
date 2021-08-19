@@ -1,6 +1,6 @@
 {
     "name": "@kagenlh/jsxfields",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "src/lib/index.js",
     "module": "src/lib/index.js",
     "files": ["src/lib/index.js"],
