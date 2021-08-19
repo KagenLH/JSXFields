@@ -1,13 +1,25 @@
 {
     "name": "@kagenlh/jsxfields",
-    "version": "1.0.2",
-    "main": "src/lib/index.js",
-    "module": "src/lib/index.js",
-    "files": ["src/lib/index.js"],
+    "version": "1.0.5",
+    "main": "index.js",
+    "module": "index.js",
+    "authors": ["Kagen Hearn", "Noah Medoff"],
     "license": "MIT",
-    "keywords": ["JSX", "React", "Forms", "JavaScript", "Fields"],
+    "keywords": [
+        "JSX",
+        "React",
+        "Forms",
+        "JavaScript",
+        "Fields"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/kagenlh/jsxfields"
+    },
+    "scripts": {
+        "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files"
+    },
+    "dependencies": {
+        "react": "^17.0.2"
     }
 }
