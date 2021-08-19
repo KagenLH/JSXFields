@@ -1,7 +1,7 @@
 {
   "name": "@kagenlh/jsxfields",
   "version": "1.0.0",
-  "private": false,
+  "private": "false",
   "main": "src/index.js",
   "module": "src/index.js",
   "files": ["src/index.js"],
