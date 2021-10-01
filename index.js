@@ -1,5 +1,5 @@
 "use strict";
-
+// This is the babel transpiled version of the React code. The original JSX should be hosted here.
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
