@@ -1,5 +1,6 @@
 "use strict";
 // This is the babel transpiled version of the React code. The original JSX should be hosted here.
+// How to recover the original JSX?
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
